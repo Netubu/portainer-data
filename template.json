@@ -1,5 +1,5 @@
 {
-  "type": 1,
+  "type": 2,
   "title": "CockroachDB",
   "description": "CockroachDB cluster",
   "note": "Deploys an insecure CockroachDB cluster, please refer to CockroachDB documentation for production deployments.",
