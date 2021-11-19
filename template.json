@@ -2,24 +2,13 @@
   "version": "2",
   "templates": [
     {
-      
-      			"type":1,
-			"title":"Registry",
-			"description":"Docker image registry",
-			"categories":[
-				"docker"
-			],
+			"type":3,
+			"title":"FDO",
+			"description":"FDO",
 			"platform":"linux",
-			"logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
-			"image":"registry:latest",
-			"ports":[
-				"5000/tcp"
-			],
-			"volumes":[
-				{
-					"container":"/var/lib/registry"
-				}
-			]
+			"logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/intel.png",
+			"stackfile":"https://raw.githubusercontent.com/portainer/templates/master/stacks/fdo/docker-stack.yml"
+
       
     }
   ]
