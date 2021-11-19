@@ -1,0 +1,29 @@
+   
+---
+version: "3"
+services:
+  minio:
+    image: minio:latest
+    container_name: ${HOST_NAME}.${DOMAIN_NAME}
+    restart: unless-stopped
+    volumes:
+       - /etc/localtime:/etc/localtime:ro
+       - data:/data
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    command: server --console-address ":9001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port:9001"
+      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+    data:
