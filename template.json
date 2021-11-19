@@ -1,9 +1,9 @@
-
 {
-	"version":"2",
-	"templates":[
-
-{
+  "version": "2",
+  "templates": [
+    {
+      
+	    {
   "type": 2,
   "title": "CockroachDB",
   "description": "CockroachDB cluster",
@@ -14,15 +14,9 @@
   "repository": {
     "url": "https://github.com/portainer/templates",
     "stackfile": "stacks/cockroachdb/docker-stack.yml"
-   "env": [
-    {
-      "name": "FQDN",
-      "label": "FQDN of container"
-    },
-    "repository": {
-    "url": "https://github.com/Netubu/portainer-data/stacks/",
-    "stackfile": "gitea.yml"
   }
+}
+    }
 
   ]
 }
