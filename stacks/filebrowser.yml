@@ -1,15 +1,15 @@
 ---
 version: "3"
 services:
-  minio:
+  filebrowser:
     image: filebrowser/filebrowser:latest
     container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
     volumes:
        - /etc/localtime:/etc/localtime:ro
-       - data/srv:/srv 
-       - data/filebrowser.db:/database.db 
-       - data/.filebrowser.json:/.filebrowser.json
+       - filebrowser_root:/srv 
+       - filebrowser.db:/database.db 
+       - filebrowser.json:/.filebrowser.json
     security_opt:
       - no-new-privileges:true
     networks:
@@ -26,4 +26,7 @@ networks:
     external: true
 
 volumes:
-    data:
+    srv:
+    filebrowser.db:
+    filebrowser.json:
+    
