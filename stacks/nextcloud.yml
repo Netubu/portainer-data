@@ -9,6 +9,8 @@ services:
     image: mariadb
     container_name: db-${HOST_NAME}.${DOMAIN_NAME}
     restart: always
+    networks:
+      - db
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     volumes:
       - db:/var/lib/mysql
@@ -24,6 +26,9 @@ services:
     restart: always
     links:
       - db
+    networks:
+      - traefik
+      - db
     volumes:
       - nextcloud:/var/www/html
     environment:
@@ -37,3 +42,8 @@ services:
       - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=80"
       - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
       - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+      
+networks:
+  traefik:
+    external: true
+  db:
