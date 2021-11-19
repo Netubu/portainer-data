@@ -13,7 +13,7 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
-    envisonment:
+    environment:
       - "MINIO_ROOT_USER=${ROOT_NAME}"
       - "MINIO_ROOT_PASSWORD=${ROOT_SECRET}"
     command: 
