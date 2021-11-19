@@ -8,8 +8,6 @@ services:
     volumes:
        - /etc/localtime:/etc/localtime:ro
        - filebrowser_root:/srv 
-       - filebrowser.db:/database.db 
-       - filebrowser.json:/.filebrowser.json
     security_opt:
       - no-new-privileges:true
     networks:
@@ -27,6 +25,5 @@ networks:
 
 volumes:
     filebrowser_root:
-    filebrowser.db:
-    filebrowser.json:
+
     
