@@ -6,12 +6,12 @@ volumes:
 
 services:
   db:
-    image: mariadb
+    image: mariadb:10.4
     container_name: db-${HOST_NAME}.${DOMAIN_NAME}
     restart: always
     networks:
       - db
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW 
     volumes:
       - db:/var/lib/mysql
     environment:
