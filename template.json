@@ -3,17 +3,24 @@
   "templates": [
     {
       
-      "type": 2,
-      "title": "CockroachDB",
-      "description": "CockroachDB cluster",
-      "note": "Deploys an insecure CockroachDB cluster, please refer to CockroachDB documentation for production deployments.",
-      "categories": ["database"],
-      "platform": "linux",
-      "logo": "https://cloudinovasi.id/assets/img/logos/cockroachdb.png",
-      "repository": {
-        "url": "https://github.com/portainer/templates",
-        "stackfile": "stacks/cockroachdb/docker-stack.yml"
-        }
+      			"type":1,
+			"title":"Registry",
+			"description":"Docker image registry",
+			"categories":[
+				"docker"
+			],
+			"platform":"linux",
+			"logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/registry.png",
+			"image":"registry:latest",
+			"ports":[
+				"5000/tcp"
+			],
+			"volumes":[
+				{
+					"container":"/var/lib/registry"
+				}
+			]
+      
     }
   ]
 }
