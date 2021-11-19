@@ -6,18 +6,6 @@
   "categories": ["database"],
   "platform": "linux",
   "logo": "https://cloudinovasi.id/assets/img/logos/cockroachdb.png",
-  "env": [
-    {
-      "name": "HOST",
-      "label": "Domain/Hostname",
-      "description": "The container hostname:  "
-    },
-    {
-      "name": "DOMAIN",
-      "label": "Domain Name",
-      "description": "The domain the host belongs to. e.g example.com"
-    }
-  ],
   "repository": {
     "url": "https://github.com/Netubu/portainer-data/stacks/",
     "stackfile": "gitea.yml"
