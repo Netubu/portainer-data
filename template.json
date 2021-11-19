@@ -13,7 +13,7 @@
       "repository": {
         "url": "https://github.com/portainer/templates",
         "stackfile": "stacks/cockroachdb/docker-stack.yml"
+        }
     }
-
   ]
 }
