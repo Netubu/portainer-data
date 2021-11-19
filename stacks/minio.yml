@@ -13,7 +13,11 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
-    command: server /data --console-address ":${PORT}"
+    command: 
+      - "server" 
+      - "/data" 
+      - "--console-address"
+      - ":${PORT}"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
