@@ -7,9 +7,12 @@ services:
     restart: unless-stopped
     volumes:
        - /etc/localtime:/etc/localtime:ro
-       - filebrowser_srv:/srv 
-       - filebrowser_db:/database.db
-       - filebrowser_json:/.filebrowser.json
+       - filebrowser_srv:/srv
+       - filebrowser_data:/data
+    command:
+     - "--port 80" 
+     - "--database /data/database.db" 
+     - "--root /srv"
     security_opt:
       - no-new-privileges:true
     networks:
@@ -27,8 +30,7 @@ networks:
 
 volumes:
     filebrowser_srv:
-    filebrowser_db:
-    filebrowser_json:
+    filebrowser_data:
     
 
     
