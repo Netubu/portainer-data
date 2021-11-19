@@ -1,13 +1,13 @@
 {
-	"version":"2",
-	"templates":[
-		{
-			"type":1,
-			"title":"Gitea",
-			"description":"Git Server",
-			"categories":[
-				"webserver"
-			],
+    "version":"2",
+    "templates":[
+        {
+            "type":1,
+            "title":"Gitea",
+            "description":"Git Server",
+            "categories":[
+                "webserver"
+            ],
             "env": [
                 {
                   "name": "HOST",
@@ -20,14 +20,14 @@
                   "description": "The domain the host belongs to. e.g example.com"
                 }
               ],
-			"platform":"linux",
-			"logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+            "platform":"linux",
+            "logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
             "repository": {
                 "url": "https://github.com/Netubu/portainer-data/stacks/",
                 "stackfile": "gitea.yml"
               }
 
-		}
-	]	
+        }
+    ]	
 }	
 
