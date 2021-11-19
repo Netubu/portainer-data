@@ -3,7 +3,7 @@ version: "2.1"
 services:
   portainer:
     image: gitea/gitea:latest
-    container_name: ${HOST}-${DOMAIN}
+    container_name: ${HOSTNAME}-${DOMAINNAME}
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
