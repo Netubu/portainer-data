@@ -10,7 +10,7 @@
     {
       "name": "FQDN",
       "label": "FQDN of container"
-    }
+    },
     "repository": {
     "url": "https://github.com/Netubu/portainer-data/stacks/",
     "stackfile": "gitea.yml"
