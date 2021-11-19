@@ -6,7 +6,12 @@
   "categories": ["database"],
   "platform": "linux",
   "logo": "https://cloudinovasi.id/assets/img/logos/cockroachdb.png",
-  "repository": {
+   "env": [
+    {
+      "name": "FQDN",
+      "label": "FQDN of container"
+    }
+    "repository": {
     "url": "https://github.com/Netubu/portainer-data/stacks/",
     "stackfile": "gitea.yml"
   }
