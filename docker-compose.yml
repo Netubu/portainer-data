@@ -1,0 +1,27 @@
+---
+version: "3"
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: ${HOST_NAME}-${DOMAIN_NAME}
+    restart: unless-stopped
+    volumes:
+       - /etc/localtime:/etc/localtime:ro
+       - gitea_data:/data
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+    gitea_data:
