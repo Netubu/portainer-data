@@ -7,7 +7,9 @@ services:
     restart: unless-stopped
     volumes:
        - /etc/localtime:/etc/localtime:ro
-       - filebrowser_srv/srv:/srv 
+       - filebrowser_srv:/srv 
+       - filebrowser_db:/database.db
+       - filebrowser_json:/.filebrowser.json
     security_opt:
       - no-new-privileges:true
     networks:
@@ -24,8 +26,9 @@ networks:
     external: true
 
 volumes:
-    filebrowser_srv/srv:
-    
+    filebrowser_srv:
+    filebrowser_db:
+    filebrowser_json:
     
 
     
