@@ -13,10 +13,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.u${HOST}.rule=Host(`${HOST}.${DOMAIN}`)"
-      - "traefik.http.services.u${HOST}.loadbalancer.server.port=3000"
-      - "traefik.http.routers.u${HOST}.entrypoints=websecure"
-      - "traefik.http.routers.u${HOST}.tls.certresolver=le"
+      - "traefik.http.routers.u${HOSTNAME}.rule=Host(`${HOSTNAME}.${DOMAINNAME}`)"
+      - "traefik.http.services.u${HOSTNAME}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.u${HOSTNAME}.entrypoints=websecure"
+      - "traefik.http.routers.u${HOSTNAME}.tls.certresolver=le"
 
 networks:
   traefik:
