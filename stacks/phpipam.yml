@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mysql:
+    container_name: mysql-${HOST_NAME}.${DOMAIN_NAME}
     image: mysql:5.6
     networks:  
       - ipam-sql
@@ -13,6 +14,7 @@ services:
   ipam:
     depends_on:
       - mysql
+    container_name: ${HOST_NAME}.${DOMAIN_NAME}
     image: pierrecdn/phpipam
     networks:
       - traefik
