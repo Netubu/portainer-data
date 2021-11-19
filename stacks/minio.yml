@@ -13,6 +13,9 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
+    envisonment:
+      - "MINIO_ROOT_USER=${ROOT_NAME}"
+      - "MINIO_ROOT_PASSWORD=${ROOT_SECRET}"
     command: 
       - "server" 
       - "/data" 
