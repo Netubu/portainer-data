@@ -3,6 +3,8 @@ version: '2'
 services:
   mysql:
     image: mysql:5.6
+    networks:  
+      - ipam-sql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
     restart: always
@@ -12,6 +14,9 @@ services:
     depends_on:
       - mysql
     image: pierrecdn/phpipam
+    networks:
+      - traefik
+      - ipam-sql
     environment:
       - MYSQL_ENV_MYSQL_USER=root
       - MYSQL_ENV_MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
@@ -26,7 +31,7 @@ services:
 networks:
   traefik:
     external: true
-   ipam-sql:
+  ipam-sql:
 
 volumes:
   db_data:
