@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     volumes:
        - /etc/localtime:/etc/localtime:ro
-       - filebrowser_root:/srv 
+       - filebrowser_srv/srv:/srv 
     security_opt:
       - no-new-privileges:true
     networks:
@@ -24,6 +24,7 @@ networks:
     external: true
 
 volumes:
-    filebrowser_root:
+    filebrowser_srv:
+    
 
     
