@@ -13,11 +13,11 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
-    command: server /data --console-address ":PORT"
+    command: server /data --console-address ":${PORT}"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port:9000"
+      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port:${PORT}"
       - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
       - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
 
