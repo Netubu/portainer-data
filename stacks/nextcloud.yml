@@ -19,6 +19,7 @@ services:
 
   app:
     image: nextcloud
+    name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: always
     links:
       - db
