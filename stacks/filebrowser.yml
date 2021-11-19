@@ -10,7 +10,6 @@ services:
        - filebrowser_srv:/srv
        - filebrowser_data:/data
     command:
-     - "--port 80" 
      - "--database /data/database.db" 
      - "--root /srv"
     security_opt:
