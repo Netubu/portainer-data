@@ -18,6 +18,8 @@ services:
       - "/data" 
       - "--console-address"
       - ":${PORT}"
+      - "--address"
+      - ":${APIPORT}"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
