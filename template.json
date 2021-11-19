@@ -1,0 +1,34 @@
+{
+	"version":"2",
+	"templates":[
+
+		{
+			"type":1,
+			"title":"Gitea",
+			"description":"Git Server",
+			"categories":[
+				"webserver"
+			],
+            "env": [
+                {
+                  "name": "HOST",
+                  "label": "Domain/Hostname",
+                  "description": "The container hostname:  "
+                },
+                {
+                  "name": "DOMAIN",
+                  "label": "Domain Name",
+                  "description": "The domain the host belongs to. e.g example.com"
+                }
+              ],
+			"platform":"linux",
+			"logo":"https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/nginx.png",
+            "repository": {
+                "url": "https://github.com/Netubu/portainer-data/templates",
+                "stackfile": "gitea.yml"
+              }
+
+		}
+	]	
+}	
+

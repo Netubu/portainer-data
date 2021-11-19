@@ -1,0 +1,23 @@
+---
+version: "2.1"
+services:
+  portainer:
+    image: gitea/gitea:latest
+    container_name: ${HOST}-${DOMAIN}
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.u${HOST}.rule=Host(`${HOST}.${DOMAIN}`)"
+      - "traefik.http.services.u${HOST}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.u${HOST}.entrypoints=websecure"
+      - "traefik.http.routers.u${HOST}.tls.certresolver=le"
+
+networks:
+  traefik:
+    external: true
