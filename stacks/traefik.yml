@@ -3,7 +3,7 @@ services:
   traefik:
     image: traefik:2.5
     networks:
-      - traefik
+      - in
     environment:
       - CLOUDFLARE_DNS_API_TOKEN=${CLOUDFLARE_API_TOKEN}
     command:
@@ -19,6 +19,7 @@ services:
       - "--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--serversTransport.insecureSkipVerify=true"
+      - "--providers.docker.swarmmode=true"
     ports:
       - "80:80"
       - "443:443"
