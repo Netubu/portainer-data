@@ -21,7 +21,7 @@ services:
       - MYSQL_ENV_MYSQL_USER=root
       - MYSQL_ENV_MYSQL_ROOT_PASSWORD=${MYSQL_ROOT}
       - MYSQL_ENV_MYSQL_HOST=mysql
-     labels:
+    labels:
       - "traefik.enable=true"
       - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
       - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=${PORT}"
