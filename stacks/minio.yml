@@ -3,7 +3,7 @@
 version: "3"
 services:
   minio:
-    image: minio:latest
+    image: minio/minio:latest
     container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
     volumes:
