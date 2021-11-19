@@ -1,0 +1,27 @@
+---
+version: "3"
+services:
+  artifactory:
+    image: reverbial/artifactory:latest
+    container_name: ${HOST_NAME}-${DOMAIN_NAME}
+    restart: unless-stopped
+    volumes:
+       - /etc/localtime:/etc/localtime:ro
+       - data:/var/opt/jfrog/artifactory
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=8081"
+      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+    data:
