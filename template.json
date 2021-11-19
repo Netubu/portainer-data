@@ -5,17 +5,6 @@
   "note": "Deploys an insecure CockroachDB cluster, please refer to CockroachDB documentation for production deployments.",
   "categories": ["database"],
   "platform": "linux",
-   "env": [
-    {
-      "name": "MYSQL_ROOT_PASSWORD",
-      "label": "Root password",
-      "description": "Password used by the root user."
-    },
-    {
-      "name": "ENV_VAR_WITH_DEFAULT_VALUE",
-      "default": "default_value",
-      "preset": true
-    },
   "logo": "https://cloudinovasi.id/assets/img/logos/cockroachdb.png",
   "repository": {
     "url": "https://github.com/Netubu/portainer-data/stacks/",
