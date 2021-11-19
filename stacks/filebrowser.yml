@@ -9,9 +9,7 @@ services:
        - /etc/localtime:/etc/localtime:ro
        - filebrowser_srv:/srv
        - filebrowser_data:/data
-    command:
-     - "--database /data/database.db" 
-     - "--root /srv"
+    command: "--port 80 --database /data/database.db --root /srv"
     security_opt:
       - no-new-privileges:true
     networks:
