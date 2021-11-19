@@ -24,7 +24,8 @@ networks:
     external: true
 
 volumes:
-    filebrowser_srv:
+    filebrowser_srv/srv:
+    
     
 
     
