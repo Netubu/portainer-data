@@ -3,7 +3,7 @@ version: "3"
 services:
   gitea:
     image: gitea/gitea:latest
-    container_name: ${HOST_NAME}-${DOMAIN_NAME}
+    container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
     volumes:
        - /etc/localtime:/etc/localtime:ro
