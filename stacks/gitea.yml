@@ -15,7 +15,7 @@ services:
       - db
     volumes:
        - /etc/localtime:/etc/localtime:ro
-       - data:/data
+       - app_data:/data
     security_opt:
       - no-new-privileges:true
     networks:
