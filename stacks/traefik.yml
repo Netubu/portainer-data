@@ -26,7 +26,7 @@ services:
       - "--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--serversTransport.insecureSkipVerify=true"
-      - "--constraint=node.role==manager"
+      
     ports:
       - "80:80"
       - "443:443"
