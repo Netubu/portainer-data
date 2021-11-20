@@ -28,7 +28,7 @@ services:
       - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
       - "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
       
-   db:
+  db:
      image: mysql:8
      restart: always
      environment:
