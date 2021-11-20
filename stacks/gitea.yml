@@ -6,11 +6,16 @@ services:
     container_name: ${HOST_NAME}.${DOMAIN_NAME}-app
     restart: unless-stopped
     environment:
+      - GITEA__attachment__ENABLED=true
+      - "GITEA__attachment__ALLOWED_TYPES=*/*"
+      - GITEA__attachment__MAX_SIZE=100
+      - GITEA__attachment__MAX_FILES=10
       - GITEA__database__DB_TYPE=mysql
       - GITEA__database__HOST=db:3306
       - GITEA__database__NAME=gitea
       - GITEA__database__USER=gitea
       - GITEA__database__PASSWD=gitea
+      - GITEA__server__DISABLE_SSH=true
       - "GITEA__server__ROOT_URL=https://${HOST_NAME}.${DOMAIN_NAME}"
       
     depends_on:
