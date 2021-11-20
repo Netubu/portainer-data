@@ -14,6 +14,7 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--providers.docker.swarmmode=true"
+      - "--providers.docker.network=traefik"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.domains[0].main=${DOMAIN_NAME}"
