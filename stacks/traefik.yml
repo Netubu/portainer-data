@@ -13,6 +13,7 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--pfoviders.docker.swarmMode"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.domains[0].main=${DOMAIN_NAME}"
@@ -25,6 +26,8 @@ services:
       - "--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
       - "--serversTransport.insecureSkipVerify=true"
+      - "--constraint=node.role==manager"
+      - "--docker.swarmMode"
     ports:
       - "80:80"
       - "443:443"
