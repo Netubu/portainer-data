@@ -13,7 +13,7 @@ services:
     command:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--pfoviders.docker.swarmMode"
+      - "--providers.docker.swarmMode"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.domains[0].main=${DOMAIN_NAME}"
