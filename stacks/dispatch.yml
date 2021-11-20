@@ -12,12 +12,14 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=80"
-      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.middlewares.%{HOST_NAME}.basicauth.users=%{USER_DATA}
+        - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+        - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=80"
+        - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      # - "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
 
 networks:
   traefik:
