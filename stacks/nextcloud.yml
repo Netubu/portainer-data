@@ -36,13 +36,14 @@ services:
       - MYSQL_DATABASE=nextcloud
       - MYSQL_USER=nextcloud
       - MYSQL_HOST=db
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=80"
-      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
-      - "traefik.docker.network=traefik" 
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+        - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=80"
+        - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
+       # - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+        - "traefik.docker.network=traefik" 
       
 networks:
   traefik:
