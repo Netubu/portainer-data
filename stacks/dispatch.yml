@@ -1,7 +1,7 @@
 ---
 version: "3"
 services:
-  minio:
+  dispatch:
     image: khlieng/dispatch:latest
     container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
