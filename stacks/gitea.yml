@@ -31,6 +31,7 @@ services:
   db:
      image: mysql:8
      restart: always
+     container_name: ${HOST_NAME}.${DOMAIN_NAME}-db
      environment:
        - MYSQL_ROOT_PASSWORD=gitea
        - MYSQL_USER=gitea
