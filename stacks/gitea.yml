@@ -48,5 +48,5 @@ networks:
   db:
 
 volumes:
-    data:
+    app_data:
     db_data:
