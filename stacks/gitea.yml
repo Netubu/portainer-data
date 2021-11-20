@@ -5,6 +5,14 @@ services:
     image: gitea/gitea:latest
     container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
+    environment:
+      - GITEA__database__DB_TYPE=mysql
+      - GITEA__database__HOST=db:3306
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=gitea
+    depands_on:
+      - db
     volumes:
        - /etc/localtime:/etc/localtime:ro
        - data:/data
@@ -12,16 +20,32 @@ services:
       - no-new-privileges:true
     networks:
       - traefik
+      - gitea
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-      - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=3000"
-      - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
-      - "traefik.http.routers.u${HOST_NAME}.tls.certresolver=le"
+      - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
+      
+   db:
+     image: mysql:8
+     restart: always
+     environment:
+       - MYSQL_ROOT_PASSWORD=gitea
+       - MYSQL_USER=gitea
+       - MYSQL_PASSWORD=gitea
+       - MYSQL_DATABASE=gitea
+     networks:
+      - gitea
+     volumes:
+      - db_data:/var/lib/mysql
 
 networks:
   traefik:
     external: true
+  gitea:
 
 volumes:
     data:
+    db_data:
