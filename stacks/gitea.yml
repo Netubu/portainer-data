@@ -6,6 +6,8 @@ services:
     container_name: ${HOST_NAME}.${DOMAIN_NAME}-app
     restart: unless-stopped
     environment:
+      - USER_UID=1000
+      - USER_GID=1000
       - GITEA__database__DB_TYPE=mysql
       - GITEA__database__HOST=db:3306
       - GITEA__database__NAME=gitea
