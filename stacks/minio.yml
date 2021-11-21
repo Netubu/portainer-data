@@ -29,11 +29,11 @@ services:
         - "traefik.http.routers.${HOST_NAME}-console.rule=Host(`${HOST_NAME}-console.${DOMAIN_NAME}`)"
         - "traefik.http.services.${HOST_NAME}-console.loadbalancer.server.port=${PORT}"
         - "traefik.http.routers.${HOST_NAME}-console.entrypoints=websecure"
-        - "traefik.http.routers.minio-console.service=minio-console"
+        - "traefik.http.routers.{HOST_NAME}.service={HOST_NAME}-console"
         - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
         - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=${APIPORT}"
         - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
-        - "traefik.http.routers.minio-console.service=minio"
+        - "traefik.http.routers.{HOST_NAME}.service={HOST_NAME}"
 
 
 networks:
