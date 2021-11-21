@@ -19,9 +19,9 @@ services:
         - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
         - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"        
         - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=80"
-configs:
-  dispatch:
-    external: true
+  configs:
+    dispatch:
+      external: true
     
 networks:
   traefik:
