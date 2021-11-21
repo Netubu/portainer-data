@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    ports:
+      - ${PORT}:25565
+    environment:
+      - EULA: "TRUE"
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    volumes:
+      - minecraft:/data
