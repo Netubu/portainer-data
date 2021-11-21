@@ -33,7 +33,7 @@ services:
         - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
         - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=${APIPORT}"
         - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
-        - "traefik.http.routers.{HOST_NAME}.service=${HOST_NAME}"
+        - "traefik.http.routers.${HOST_NAME}.service=${HOST_NAME}"
 
 
 networks:
