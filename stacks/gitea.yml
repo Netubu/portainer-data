@@ -33,14 +33,14 @@ services:
     networks:
       - traefik
       - db
-    deploy:
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-        - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=3000"
-        - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
-        #- "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
-        - "traefik.docker.network=traefik" 
+      
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=3000"
+      - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      #- "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
+      - "traefik.docker.network=traefik" 
       
   db:
      image: mysql:8
