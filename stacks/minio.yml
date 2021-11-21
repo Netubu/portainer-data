@@ -23,19 +23,18 @@ services:
       - ":9001"
       - "--address"
       - ":9000"
-    deploy:
-      labels:
-        - "traefik.enable=true"
+
+    labels:
+      - "traefik.enable=true"    
+      - "traefik.http.routers.${HOST_NAME}-console.rule=Host(`${HOST_NAME}-console.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}-console.loadbalancer.server.port=9001"
+      - "traefik.http.routers.${HOST_NAME}-console.entrypoints=websecure"
+      - "traefik.http.routers.${HOST_NAME}-console.service=${HOST_NAME}-console"
         
-        - "traefik.http.routers.${HOST_NAME}-console.rule=Host(`${HOST_NAME}-console.${DOMAIN_NAME}`)"
-        - "traefik.http.services.${HOST_NAME}-console.loadbalancer.server.port=9001"
-        - "traefik.http.routers.${HOST_NAME}-console.entrypoints=websecure"
-        - "traefik.http.routers.${HOST_NAME}-console.service=${HOST_NAME}-console"
-        
-        - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
-        - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=9000"
-        - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
-        - "traefik.http.routers.${HOST_NAME}.service=${HOST_NAME}"
+      - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=9000"
+      - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${HOST_NAME}.service=${HOST_NAME}"
 
 
 networks:
