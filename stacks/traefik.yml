@@ -27,8 +27,7 @@ services:
       - "--certificatesresolvers.le.acme.storage=/etc/traefik/acme.json"
       - "--certificatesresolvers.le.acme.dnschallenge.provider=cloudflare"
       - "--certificatesresolvers.le.acme.dnschallenge.delaybeforecheck=0"
-      - "--serversTransport.insecureSkipVerify=true"
-      
+      - "--serversTransport.insecureSkipVerify=true"     
     ports:
       - target: 80
         published: 80
@@ -38,11 +37,9 @@ services:
         mode: host
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "traefik:/etc/traefik"
-  
+      - "traefik:/etc/traefik"  
 networks:
   traefik:
      external: true
-
 volumes:
   traefik:
