@@ -12,3 +12,9 @@ services:
     restart: unless-stopped
     volumes:
       - minecraft:/data
+
+networks:
+  games:
+     external: true
+volumes:
+  minecraft:
