@@ -22,7 +22,6 @@ services:
 configs:
   dispatch:
     external: true
-    file: ./config.toml
     
 networks:
   traefik:
