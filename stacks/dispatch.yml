@@ -15,8 +15,8 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.middlewares.${HOSTNAME}-auth.basicauth.users=${USER_DATA}"
-        - "traefik.http.routers.${HOSTNAME}.middlewares=${HOSTNAME}-auth"
+        - "traefik.http.middlewares.${HOST_NAME}-auth.basicauth.users=${USER_DATA}"
+        - "traefik.http.routers.${HOSTNAME}.middlewares=${HOST_NAME}-auth"
         - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
         - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"        
         - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=80"
