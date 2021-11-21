@@ -19,7 +19,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.websecure.http.tls.certResolver=le"
       - "--entrypoints.websecure.http.tls.domains[0].main=${DOMAIN_NAME}" 
-      - "--entrypoints.websecure.http.tls.domains[0].sans=*.${DOMAIN_NAME}"
+      - "--entrypoints.websecure.http.tls.domains[0].sans=${SAN_DOMAIN_NAMES}"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
