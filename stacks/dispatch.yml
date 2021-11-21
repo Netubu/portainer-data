@@ -1,5 +1,5 @@
 ---
-version: "3"
+version: "3.8"
 services:
   dispatch:
     image: khlieng/dispatch:latest
@@ -20,8 +20,12 @@ services:
         - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"        
         - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=80"
     configs:
-      config.toml:
-        external: true
+      - source: dispatch_config
+        target: config.toml
+
+configs:
+  dispatch_config:
+     external: true
     
 networks:
   traefik:
