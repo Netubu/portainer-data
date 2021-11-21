@@ -17,9 +17,9 @@ services:
         - "traefik.enable=true"
         - "traefik.http.middlewares.u${HOST_NAME}.basicauth.users=${USER_DATA}"
         - "traefik.http.routers.u${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+        - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"        
         - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.port=443"
-        - "traefik.http.routers.u${HOST_NAME}.entrypoints=websecure"
-        - "traefik.http.services.u${HOST_NAME}loadbalancer.server.scheme=https"
+        - "traefik.http.services.u${HOST_NAME}.loadbalancer.server.scheme=https"
       # - "traefik.http.routers.${HOST_NAME}.tls.certresolver=le"
 
 networks:
