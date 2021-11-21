@@ -22,7 +22,7 @@ services:
 configs:
   dispatch:
     external: true
-    dest: data/config.toml
+    file: ./config.toml
     
 networks:
   traefik:
