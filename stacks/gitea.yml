@@ -57,26 +57,6 @@ services:
      volumes:
       - db_data:/var/lib/mysql
       
-  db-backup:
-     image: databack/mysql-backup:latest
-     restart: always
-     container_name: ${HOST_NAME}.${DOMAIN_NAME}-db-backup
-     environment:
-       - DB_USER=root
-       - DB_PASS=gitea
-       - DB_NAME=gitea
-       - DB_PORT=3306
-       - RUN_ONCE=${RUN_ONCE}
-       - DB_DUMP_FREQ=1
-       - DB_DUMP_BEGIN=22:35
-       - DB_DUMP_TARGET=/backup
-       - DB_SERVER=${HOST_NAME}.${DOMAIN_NAME}-db
-     networks:
-      - db
-     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - backup:/backup
-     
 networks:
   traefik:
     external: true
@@ -85,4 +65,4 @@ networks:
 volumes:
     app_data:
     db_data:
-    backup:
+
