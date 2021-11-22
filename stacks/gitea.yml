@@ -56,7 +56,7 @@ services:
       - db
      volumes:
       - db_data:/var/lib/mysql
-      - db:backup:/backup
+      - db_backup:/backup
       
 networks:
   traefik:
