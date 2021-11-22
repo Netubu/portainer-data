@@ -46,6 +46,7 @@ services:
      image: mysql:8
      restart: always
      container_name: ${HOST_NAME}.${DOMAIN_NAME}-db
+     hostname: ${HOST_NAME}.${DOMAIN_NAME}-db
      environment:
        - MYSQL_ROOT_PASSWORD=gitea
        - MYSQL_USER=gitea
@@ -65,10 +66,11 @@ services:
        - DB_PASS=gitea
        - DB_NAME=gitea
        - DB_PORT=3306
+       - RUN_ONCE=true
        - DB_DUMP_FREQ=720
        - DB_DUMP_BEGIN=22:35
        - DB_DUMP_TARGET=/backup
-       - DB_SERVER=db
+       - DB_SERVER=${HOST_NAME}.${DOMAIN_NAME}-db
      networks:
       - db
      volumes:
