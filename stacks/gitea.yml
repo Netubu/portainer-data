@@ -64,6 +64,7 @@ services:
        - DB_USER=gitea
        - DB_PASS=gitea
        - DB_NAME=gitea
+       - DB_PORT=3306
        - DB_DUMP_FREQ=720
        - DB_DUMP_BEGIN=22:35
        - DB_DUMP_TARGET=/backup
