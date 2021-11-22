@@ -63,10 +63,11 @@ services:
      environment:
        - DB_USER=gitea
        - DB_PASS=gitea
+       - DB_NAME=gitea
        - DB_DUMP_FREQ=720
-       - DB_DUMP_BEGIN=2130
+       - DB_DUMP_BEGIN=22:35
        - DB_DUMP_TARGET=/backup
-       - DB_SERVER=${HOST_NAME}.${DOMAIN_NAME}-db
+       - DB_SERVER=db
      networks:
       - db
      volumes:
