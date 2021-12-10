@@ -10,8 +10,8 @@ services:
        - var:/opt/splunk/var
        - etc:/opt/splunk/etc
     ports:
-       - ${PORT}:${PORT}
-       - ${PORT}:${PORT}/udp    
+       - ${START_PORT}-${END_PORT}:${START_PORT}-${END_PORT}
+       - ${START_PORT}-${END_PORT}:${START_PORT}-${END_PORT}/udp
     networks:
       - traefik
     environment:
