@@ -10,7 +10,7 @@ services:
        - var:/opt/splunk/var
        - etc:/opt/splunk/etc
     security_opt:
-      - no-new-privileges:true
+      #- no-new-privileges:true
     networks:
       - traefik
     environment:
