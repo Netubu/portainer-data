@@ -1,0 +1,33 @@
+---
+version: "3"
+services:
+  minio:
+    image: reverbial/splunk:latest
+    container_name: ${HOST_NAME}.${DOMAIN_NAME}
+    restart: unless-stopped
+    volumes:
+       - /etc/localtime:/etc/localtime:ro
+       - var:/opt/splunk/var
+       - etc:/opt/splunk/etc
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    environment:
+      - "SPLUNK_START_ARGS=--accept-license"
+      - "SPLUNK_PASSWORD=${PASSWORD}"
+    labels:
+      - "traefik.enable=true"    
+      - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=8000"
+      - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${HOST_NAME}.service=${HOST_NAME}"
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+    etc:
+    var:
+    
