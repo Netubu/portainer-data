@@ -9,7 +9,9 @@ services:
        - /etc/localtime:/etc/localtime:ro
        - var:/opt/splunk/var
        - etc:/opt/splunk/etc
-
+    ports:
+       - ${PORT}:${PORT}
+       - ${PORT}:${PORT}/udp    
     networks:
       - traefik
     environment:
