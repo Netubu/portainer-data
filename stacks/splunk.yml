@@ -9,8 +9,7 @@ services:
        - /etc/localtime:/etc/localtime:ro
        - var:/opt/splunk/var
        - etc:/opt/splunk/etc
-    security_opt:
-      #- no-new-privileges:true
+
     networks:
       - traefik
     environment:
