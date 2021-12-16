@@ -2,7 +2,7 @@
 version: "3"
 services:
   minio:
-    image: reverbial/splunk:8.1.1
+    image: splunk/splunk
     container_name: ${HOST_NAME}.${DOMAIN_NAME}
     restart: unless-stopped
     volumes:
