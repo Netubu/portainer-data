@@ -1,0 +1,18 @@
+---
+version: "3"
+services:
+  minio:
+    image: reverbial/splunk-lic-server
+    container_name: ${HOST_NAME}.${DOMAIN_NAME}
+    restart: unless-stopped
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"    
+      - "traefik.http.routers.${HOST_NAME}.rule=Host(`${HOST_NAME}.${DOMAIN_NAME}`)"
+      - "traefik.http.services.${HOST_NAME}.loadbalancer.server.port=1337"
+      - "traefik.http.routers.${HOST_NAME}.entrypoints=websecure"
+      - "traefik.http.routers.${HOST_NAME}.service=${HOST_NAME}"
+networks:
+  traefik:
+    external: true
